@@ -94,7 +94,7 @@ rf_test_pred = rf.predict(x_test)
 rf_train_acc = round(accuracy_score(rf_train_pred,y_train)*100,2)
 rf_test_acc = round(accuracy_score(rf_test_pred,y_test)*100,2)
 
-#Ensamble Model using Stacking
+#Ensemble Model using Stacking
 from sklearn.ensemble import StackingClassifier
 estimators = {('knn',k),
              ('svm',s),
