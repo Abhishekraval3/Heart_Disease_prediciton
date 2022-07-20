@@ -46,7 +46,7 @@ y_test = y[lim:]
 
 ## Logistic Regression Algorithm
 from sklearn.linear_model import LogisticRegression
-l = LogisticRegression(solver='liblinear',max_iter = 1000, random_state = 31)
+l = LogisticRegression(solver='liblinear',max_iter = 1000, random_state = 0)
 l.fit(x_train,y_train)
 lr_train_pred = l.predict(x_train)
 lr_test_pred = l.predict(x_test)
@@ -56,7 +56,7 @@ lr_test_acc = round(accuracy_score(lr_test_pred,y_test)*100,2)
 
 # KNN Algorithm
 from sklearn.neighbors import KNeighborsClassifier
-k=KNeighborsClassifier(n_neighbors=14)
+k=KNeighborsClassifier(n_neighbors=13)
 k.fit(x_train,y_train)
 knn_train_pred = k.predict(x_train)
 knn_test_pred = k.predict(x_test)
@@ -87,7 +87,7 @@ svm_test_acc = round(accuracy_score(svm_test_pred,y_test)*100,2)
 # Random Forest Algorithm
 from sklearn.ensemble import RandomForestClassifier
 rf = RandomForestClassifier(random_state=160)
-rfr = RandomForestClassifier(random_state=168)
+rfr = RandomForestClassifier(random_state=62)
 rf.fit(x_train,y_train)
 rf_train_pred = rf.predict(x_train)
 rf_test_pred = rf.predict(x_test)
@@ -103,7 +103,7 @@ estimators = {('knn',k),
               ('rf',rfr)}
 
 stack_model = StackingClassifier(
-estimators = estimators, final_estimator = LogisticRegression(random_state=22))
+estimators = estimators, final_estimator = LogisticRegression(random_state=0))
 stack_model.fit(x_train,y_train)
 stack_train_pred = stack_model.predict(x_train)
 stack_test_pred = stack_model.predict(x_test)
