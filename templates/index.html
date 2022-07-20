@@ -14,23 +14,19 @@
             background-attachment: fixed;
             justify-content: center;
             text-align: center;
+        }
 
-        }
-        form{
-            text-align: center;
-        }
-        
         label {
             width:170px;
-            clear:left;
+            display: inline-block;
+            clear: both;
             text-align:right;
             padding-right:10px;
-            align-content: center;
-            margin-left: 550px;
             line-height: 25px;
+            margin-left: 550px;
         }
         input,label,select {
-        float:left;
+            float:left;
         }
 
     </style>
@@ -38,36 +34,30 @@
 <body>
     <br><br>
     <div class="login" style="text-align:center">
-        <h1 style="color: #2517a8c7;">Cardivascular Disease Prediction</h1>
-        <h3 style="color: #2517a8c7"> Enter the following values to predict Cardivascular Disease</h3></div><br>
+        <h1 style="color: #2517a8c7;">Cardiovascular Disease Prediction</h1>
+        <h3 style="color: #2517a8c7"> Enter the following values to predict Cardiovascular Disease</h3></div><br>
         <!-- Main Input For Receiving Query to our ML -->
         <form action="{{ url_for('predict')}}" method="post"  >
-            <div class="data" >
-                
-                <div class="input">
-            <label for="Gender">Gender:</label>
-            <select name="Gender" >
-                <option value="1">Male</option>
-                <option value="0">Female</option>
-            </select>
+
+            <label for="Gender">Gender:</label><select name="Gender" >
+                                                <option value="1">Male</option>
+                                                <option value="0">Female</option>
+                                                </select>
             
-            <label for="Age">Age:</label>
-            <input type="number" name="Age" placeholder="10-100" required="required"style="height:15px" min="10" max="100" />
+            <label for="Age">Age:</label><input type="number" name="Age" placeholder="10-100" required="required"style="height:15px" min="10" max="100" />
 
             <label for="Current_smoker">Current_smoker:</label>
             <select name="Current_smoker" >
                 <option value="1">Yes</option>
                 <option value="0" selected>No</option>
-            </select></div>
+            </select>
             
-            <div class="input">
             <label for="BPMeds">BPMeds:</label>
             <select name="BPMeds" >
                 <option value="1">Yes</option>
                 <option value="0" selected>No</option>
             </select>
 
-            <div class="input">
             <label for="Prevalent_Stroke">Prevalent Stroke:</label>
             <select name="Prevalent_Stroke" >
                 <option value="1">Yes</option>
@@ -78,48 +68,40 @@
             <select name="Prevalent_Hypertension" >
                 <option value="1">Yes</option>
                 <option value="0" selected>No</option>
-            </select></div>
+            </select>
 
             <label for="Diabetes">Diabetes:</label>
             <select name="Diabetes" >
                 <option value="1">Yes</option>
                 <option value="0" selected>No</option>
-            </select></div>
+            </select>
             
-            <div class="input">
-            <label for="Total_cholesterol">Total_cholesterol: </label>
-            <input type="number" name="Total_cholesterol" placeholder="1-300" required="required" style="height:15px" min="1" max="300"/>
+            <label for="Total_cholesterol">Total_cholesterol: </label><input type="number" name="Total_cholesterol" placeholder="1-300" required="required" style="height:15px" min="1" max="300"/>
 
-            </div>
+            <label for="Blood_pressure">Systolic Blood Pressure:</label><input type="number" name="Systolic_Blood_Pressure" placeholder="1-150" required="required"style="height:15px" min="1" max="150"/>
 
-            <div class="input">
-            <label for="Blood_pressure">Blood_Pressure:</label>
-            <input type="number" name="Blood_Pressure" placeholder="1-150" required="required"style="height:15px" min="1" max="150"/>
+            <label for="Blood_pressure">Diastolic Blood Pressure:</label><input type="number" name="Siastolic_Blood_Pressure" placeholder="1-150" required="required"style="height:15px" min="1" max="150"/>
 
-            <label for="Body_Mass_Index">Body_Mass_Index:</label>
-            <input type="number" step="0.01" name="Body_Mass_Index" placeholder="1-40" required="required" style="height:15px" min="1" max="40"/>
-            </div>
-
-            <div class="input">
-            <label for="Heart_Rate">Heart_Rate:</label>
-            <input type="number" name="Heart_Rate" placeholder="1-120" required="required"style="height:15px" min="1" max="120"/>
+            <label for="Body_Mass_Index">Body_Mass_Index:</label><input type="number" step="0.01" name="Body_Mass_Index" placeholder="1-40" required="required" style="height:15px" min="1" max="40"/>
+        
+            <label for="Heart_Rate">Heart_Rate:</label><input type="number" name="Heart_Rate" placeholder="1-120" required="required"style="height:15px" min="1" max="120"/>
  
-            <label for="Glucose">Glucose:</label>
-            <input type="number" name="Glucose" placeholder="1-160" required="required"style="height:15px" min="1" max="160" />
-        </div>
-    </div>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <label for="Glucose">Glucose:</label><input type="number" name="Glucose" placeholder="1-160" required="required"style="height:15px" min="1" max="160" />
+        
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            
             <div style="text-align: center">
                 <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-                <button type="reset" class="btn btn-primary btn-block btn-large">Reset</button>
+                <button type="reset" class="btn btn-primary btn-block btn-large" >Reset</button>
             </div>
-            
         </form>
         <br>
         <div style="text-align:center">
             <h2>{{ prediction_text }}</h2>
+            <br><br><br>
+            <h2>{{ Suggestion_text }}</h2>
         </div>
-
-    
+        <br><br>
+        
 </body>
 </html>
